@@ -1,5 +1,4 @@
 import {
-  Play,
   Flame,
   TrendingUp,
   Film,
@@ -9,6 +8,8 @@ import {
   Server,
   CircleCheck,
 } from "lucide-react";
+import logo from "@/assets/streamassist-logo.png.asset.json";
+
 
 type Item = { label: string; icon: React.ElementType; active?: boolean };
 
@@ -41,13 +42,18 @@ export function Sidebar() {
   return (
     <aside className="flex w-64 shrink-0 flex-col border-r border-border bg-sidebar">
       <div className="flex items-center gap-3 px-6 py-6">
-        <div className="grid size-9 place-items-center rounded-xl bg-accent shadow-glow">
-          <Play className="size-4 fill-accent-foreground text-accent-foreground" />
-        </div>
+        <img
+          src={logo.url}
+          alt="StreamAssist logo"
+          width={40}
+          height={40}
+          className="size-10 shrink-0 object-contain drop-shadow-sm"
+        />
         <span className="text-lg font-semibold tracking-tight text-foreground">
           StreamAssist
         </span>
       </div>
+
 
       <nav className="flex-1 space-y-6 overflow-y-auto px-3 py-2">
         {sections.map((section) => (
