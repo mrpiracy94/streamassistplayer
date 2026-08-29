@@ -153,3 +153,18 @@
     color: var(--color-foreground);
   }
 }
+
+@utility player-btn {
+  display: grid;
+  place-items: center;
+  height: 2.25rem;
+  width: 2.25rem;
+  border-radius: 9999px;
+  color: white;
+  transition: background-color 150ms ease, transform 150ms ease;
+
+  &:hover {
+    background-color: oklch(1 0 0 / 0.15);
+    transform: scale(1.05);
+  }
+}
