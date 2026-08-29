@@ -1,5 +1,4 @@
 import {
-  Play,
   Flame,
   TrendingUp,
   Film,
@@ -9,6 +8,8 @@ import {
   Server,
   CircleCheck,
 } from "lucide-react";
+import logo from "@/assets/streamassist-logo.png.asset.json";
+
 
 type Item = { label: string; icon: React.ElementType; active?: boolean };
 
