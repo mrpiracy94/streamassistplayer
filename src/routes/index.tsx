@@ -38,7 +38,12 @@ function Index() {
 
   return (
     <div className="flex min-h-screen bg-background">
-      <Sidebar />
+      <Sidebar
+        view={view}
+        onNavigate={setView}
+        serverOnline={true}
+        addonsConnected={2}
+      />
 
       <main className="flex-1 overflow-x-hidden">
         <header className="sticky top-0 z-10 flex flex-wrap items-center gap-3 border-b border-border bg-background/85 px-8 py-4 backdrop-blur">
