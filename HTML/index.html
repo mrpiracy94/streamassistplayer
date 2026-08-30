@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="pt-PT">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StreamAssist — Local Media Manager &amp; Player</title>
+    <meta
+      name="description"
+      content="StreamAssist organizes your local movie library and plays it instantly with an embedded player, subtitle and audio track selection, and playback speed control."
+    />
+    <meta property="og:title" content="StreamAssist — Local Media Manager & Player" />
+    <meta
+      property="og:description"
+      content="Browse your local movie library and stream it in-app with a sleek custom player."
+    />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" type="image/png" href="assets/images/favicon.png" />
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body>
+    <div class="app">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div class="sidebar-brand">
+          <img
+            src="assets/images/streamassist-logo.png"
+            alt="StreamAssist logo"
+            width="40"
+            height="40"
+            class="sidebar-logo"
+          />
+          <span class="sidebar-title">StreamAssist</span>
+        </div>
+
+        <nav class="sidebar-nav" id="sidebar-nav"></nav>
+
+        <div class="status-widget">
+          <div class="status-row">
+            <span class="status-label" data-icon="server">Python Online</span>
+            <span class="status-value status-value--ok">
+              <span class="status-dot status-dot--pulse"></span>Live
+            </span>
+          </div>
+          <div class="status-row status-row--spaced">
+            <span class="status-label" data-icon="puzzle">Add-ons</span>
+            <span class="status-badge status-badge--ok" data-icon="circle-check">Connected</span>
+          </div>
+        </div>
+      </aside>
+
+      <!-- Main -->
+      <main class="main">
+        <header class="topbar">
+          <button class="icon-btn icon-btn--menu" id="menu-toggle" aria-label="Toggle sidebar" data-icon="menu"></button>
+          <div>
+            <h1 class="topbar-title">Filmes Locais</h1>
+            <p class="topbar-sub"><span id="count">8</span> titles indexed from your local server</p>
+          </div>
+          <div class="topbar-actions">
+            <div class="search">
+              <span class="search-icon" data-icon="search"></span>
+              <input id="search" type="search" placeholder="Search library…" aria-label="Search library" />
+            </div>
+            <button class="icon-btn" aria-label="Filters" data-icon="sliders"></button>
+            <button class="icon-btn icon-btn--accent" aria-label="Grid view" data-icon="layout-grid"></button>
+          </div>
+        </header>
+
+        <div class="grid" id="grid"></div>
+        <p class="empty" id="empty" hidden></p>
+      </main>
+    </div>
+
+    <!-- Player modal -->
+    <div class="player-backdrop" id="player" hidden>
+      <div class="player-shell" id="player-shell">
+        <video id="video" class="player-video" playsinline></video>
+
+        <div class="player-top">
+          <button class="player-back" id="player-close" aria-label="Back to library" data-icon="arrow-left"></button>
+          <div class="player-top-meta">
+            <p class="player-top-title" id="player-title"></p>
+            <p class="player-top-sub" id="player-sub"></p>
+          </div>
+        </div>
+
+        <button class="player-center" id="player-center" aria-label="Play">
+          <span class="player-center-circle" data-icon="play-fill"></span>
+        </button>
+
+        <div class="player-bar">
+          <div class="timeline" id="timeline">
+            <div class="timeline-track"><div class="timeline-fill" id="timeline-fill"></div></div>
+            <span class="timeline-thumb" id="timeline-thumb"></span>
+            <span class="timeline-tip" id="timeline-tip" hidden></span>
+          </div>
+
+          <div class="player-controls">
+            <button class="player-btn" id="btn-toggle" aria-label="Play/Pause" data-icon="play"></button>
+            <button class="player-btn" id="btn-back10" aria-label="Back 10s" data-icon="rotate-ccw"></button>
+            <button class="player-btn" id="btn-fwd10" aria-label="Forward 10s" data-icon="rotate-cw"></button>
+
+            <div class="volume">
+              <button class="player-btn" id="btn-mute" aria-label="Mute" data-icon="volume-2"></button>
+              <input id="volume" class="volume-range" type="range" min="0" max="1" step="0.05" value="1" aria-label="Volume" />
+            </div>
+
+            <span class="player-time"><span id="t-cur">0:00</span> / <span id="t-dur">0:00</span></span>
+
+            <div class="player-right">
+              <div class="menu-wrap">
+                <button class="player-btn" id="btn-tracks" aria-label="Audio and subtitles" data-icon="subtitles"></button>
+                <div class="menu menu--tracks" id="menu-tracks" hidden></div>
+              </div>
+              <div class="menu-wrap">
+                <button class="player-btn" id="btn-speed" aria-label="Playback speed" data-icon="gauge"></button>
+                <div class="menu menu--speed" id="menu-speed" hidden></div>
+              </div>
+              <button class="player-btn" id="btn-fullscreen" aria-label="Fullscreen" data-icon="maximize"></button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="js/icons.js"></script>
+    <script src="js/movies.js"></script>
+    <script src="js/script.js"></script>
+  </body>
+</html>
