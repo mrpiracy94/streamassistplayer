@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Search, SlidersHorizontal, LayoutGrid } from "lucide-react";
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar, type ViewId } from "@/components/Sidebar";
 import { MovieCard } from "@/components/MovieCard";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { movies, type Movie } from "@/data/movies";
@@ -31,6 +31,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [active, setActive] = useState<Movie | null>(null);
   const [query, setQuery] = useState("");
+  const [view, setView] = useState<ViewId>("library");
 
   const filtered = movies.filter((m) =>
     m.title.toLowerCase().includes(query.toLowerCase()),
