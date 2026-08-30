@@ -1,7 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Search, SlidersHorizontal, LayoutGrid } from "lucide-react";
-import { Sidebar } from "@/components/Sidebar";
+import { Sidebar, type ViewId } from "@/components/Sidebar";
 import { MovieCard } from "@/components/MovieCard";
 import { VideoPlayer } from "@/components/VideoPlayer";
 import { movies, type Movie } from "@/data/movies";
@@ -31,6 +31,7 @@ export const Route = createFileRoute("/")({
 function Index() {
   const [active, setActive] = useState<Movie | null>(null);
   const [query, setQuery] = useState("");
+  const [view, setView] = useState<ViewId>("library");
 
   const filtered = movies.filter((m) =>
     m.title.toLowerCase().includes(query.toLowerCase()),
@@ -38,7 +39,12 @@ function Index() {
 
   return (
     <div className="flex min-h-screen bg-background">
-      <Sidebar />
+      <Sidebar
+        view={view}
+        onNavigate={setView}
+        serverOnline={true}
+        addonsConnected={2}
+      />
 
       <main className="flex-1 overflow-x-hidden">
         <header className="sticky top-0 z-10 flex flex-wrap items-center gap-3 border-b border-border bg-background/85 px-8 py-4 backdrop-blur">
